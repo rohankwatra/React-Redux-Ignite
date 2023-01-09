@@ -8,7 +8,7 @@ import GameDetail from "../components/GameDetail";
 import { useLocation } from "react-router-dom";
 //Styling and Animation
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 function Home(){
   //get the current location
@@ -25,7 +25,10 @@ function Home(){
 
   return (
     <GamesList>
-     {pathId && <GameDetail/>}  
+      <AnimateSharedLayout type="crossfade" >
+     <AnimatePresence>
+     {pathId && <GameDetail pathId={pathId} />}  
+      </AnimatePresence> 
     <h2>Upcoming Games</h2>
     <Games>
       {upcoming.map(game =>(
@@ -59,6 +62,7 @@ function Home(){
         key={game.id}/>
       ))}
     </Games>
+    </AnimateSharedLayout>
     </GamesList>
   )
 }
