@@ -19,7 +19,7 @@ const Game = ({name,released,image,id}) =>{
         dispatch(loadDetail(id));
     }
     return(
-        <StyledGame variants={fadeIn} initial='hidden' animate="
+        <StyledGame variants={popup} initial='hidden' animate="
         show" layoutId={stringPathId} onClick={loadDetailHandler}>
         <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
